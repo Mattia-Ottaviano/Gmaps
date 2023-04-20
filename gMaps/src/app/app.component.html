@@ -13,4 +13,13 @@
               [radius]="50"
               [options] = 'circleOptions'>
   </map-circle>
+
+  <map-marker [position]="position" 
+  [label]="label" 
+  [title]="title"
+  [options] = "markerOptions">
+  </map-marker>
+
+  <map-polygon [paths]="vertices">
+  </map-polygon>
 </google-map>

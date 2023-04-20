@@ -18,6 +18,8 @@ export class AppComponent {
   label1 : string;
   label2 : string;
   circleOptions: any;
+  markerOptions: google.maps.MarkerOptions;
+  vertices: google.maps.LatLngLiteral[];
   
 
   constructor()
@@ -37,5 +39,17 @@ export class AppComponent {
     this.label2 = "casaO";
 
     this.circleOptions = {fillColor : 'blue'}
+
+    let iconData : google.maps.Icon = {
+      url:'./assets/img/cat_acrobat.ico',
+      scaledSize : new google.maps.Size(60,60)
+    }
+    this.markerOptions = {icon:iconData}
+
+    this.vertices = [
+      {  lat: this.center.lat + 0.001, lng: this.center.lng - 0.002 },
+      {  lat: this.center.lat, lng: this.center.lng },
+      {  lat: this.center.lat - 0.001, lng: this.center.lng - 0.002}
+    ];
   }
 }
