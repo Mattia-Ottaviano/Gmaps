@@ -25,9 +25,21 @@ export class AppComponent implements AfterViewInit {
     console.log(this.geoJsonObject); //stampo l'oggetto geoJsonObject sulla console
   }
 
-    @ViewChild('mapRef')
-  mapRef!: GoogleMap;
-    ngAfterViewInit() {
-      this.mapRef.data.addGeoJson(this.geoJsonObject);
-    }
+  @ViewChild('mapRef') mapRef!: GoogleMap;
+  ngAfterViewInit() {
+    this.mapRef.data.addGeoJson(this.geoJsonObject);
+    this.mapRef.data.setStyle(this.styleFunc)
+  }
+
+  styleFunc = (feature:any) =>{
+    console.log(feature.i.id)
+    let newColor = "#FF0000"; //RED
+    if(feature.i.id == 0) newColor = "#00FF00"; //GREEN
+    else newColor = "#0000FF"; //BLUE
+    return ({
+      clickable: false,
+      fillColor: newColor,
+      strokeWeight: 1
+    });
+  }
 }
